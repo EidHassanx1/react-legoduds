@@ -1,16 +1,29 @@
+import { useState } from 'react';
 import './App.css'
 import ContentPage from './components/ContentPage';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import './css/main.css'
 
+const cartStart = [
+  {
+    id: 0,
+    title: "",
+    price: 0,
+
+  }
+]
 
 function App() {
+  const [cartItem, setCartItem] = useState([...cartStart])
+  const [amount, setAmount] = useState(0)
+  const [id, setId] = useState(0)
+
   return (
     <div className="container">
-        <Header/>
+        <Header cartItem={cartItem} amount={amount}/>
         <Nav />
-        <ContentPage/>
+        <ContentPage cartItem={cartItem} setCartItem={setCartItem} setAmount={setAmount}/>
     </div>
   );
 }
